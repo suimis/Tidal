@@ -1,0 +1,95 @@
+{
+  "models": [
+    {
+      "id": "deepseek-chat",
+      "name": "DeepSeek V3",
+      "provider": "DeepSeek",
+      "providerId": "deepseek",
+      "enabled": true,
+      "toolCallType": "manual"
+    },
+    {
+      "id": "deepseek-reasoner",
+      "name": "DeepSeek R1",
+      "provider": "DeepSeek",
+      "providerId": "deepseek",
+      "enabled": true,
+      "toolCallType": "manual",
+      "toolCallModel": "deepseek-chat"
+    },
+    {
+      "id": "deepseek-r1",
+      "name": "DeepSeek R1",
+      "provider": "Ollama",
+      "providerId": "ollama",
+      "enabled": true,
+      "toolCallType": "manual",
+      "toolCallModel": "phi4"
+    },
+    {
+      "id": "<OLLAMA_MODEL_ID>",
+      "name": "<OLLAMA_MODEL_NAME>",
+      "provider": "Ollama",
+      "providerId": "ollama",
+      "enabled": true,
+      "toolCallType": "manual",
+      "toolCallModel": "<OLLAMA_MODEL_ID>"
+    },
+    {
+      "id": "o3-mini",
+      "name": "o3 mini",
+      "provider": "OpenAI",
+      "providerId": "openai",
+      "enabled": true,
+      "toolCallType": "native"
+    },
+    {
+      "id": "gpt-4o",
+      "name": "GPT-4o",
+      "provider": "OpenAI",
+      "providerId": "openai",
+      "enabled": true,
+      "toolCallType": "native"
+    },
+    {
+      "id": "gpt-4o-mini",
+      "name": "GPT-4o mini",
+      "provider": "OpenAI",
+      "providerId": "openai",
+      "enabled": true,
+      "toolCallType": "native"
+    },
+    {
+      "id": "claude-3-7-sonnet-20250219",
+      "name": "Claude 3.7 Sonnet",
+      "provider": "Anthropic",
+      "providerId": "anthropic",
+      "enabled": true,
+      "toolCallType": "native"
+    },
+    {
+      "id": "claude-3-5-sonnet-latest",
+      "name": "Claude 3.5 Sonnet",
+      "provider": "Anthropic",
+      "providerId": "anthropic",
+      "enabled": true,
+      "toolCallType": "native"
+    },
+    {
+      "id": "claude-3-5-haiku-20241022",
+      "name": "Claude 3.5 Haiku",
+      "provider": "Anthropic",
+      "providerId": "anthropic",
+      "enabled": true,
+      "toolCallType": "native"
+    },
+    {
+      "id": "<OPENAI_COMPATIBLE_MODEL>",
+      "name": "<OPENAI_COMPATIBLE_MODEL>",
+      "provider": "OpenAI Compatible",
+      "providerId": "openai-compatible",
+      "enabled": true,
+      "toolCallType": "native"
+    }
+  ]
+}

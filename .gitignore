@@ -1,0 +1,66 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.next/
+**/.next/
+**/.million
+**/__pycache__
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 全局忽略
+node_modules/
+.env
+
+
+.cache/
+
+# 生产环境构建产物
+# Next.js 构建输出
+frontend/.next/
+frontend/out/
+
+# Django 构建输出
+Django/staticfiles/
+Django/media/
+Django/__pycache__/
+Django/*.pyc
+Django/migrations/__pycache__/
+
+# 生产环境配置文件（包含敏感信息）
+frontend/.env.production
+frontend/.env.local
+Django/backend/settings_production.py
+
+# 数据库文件（生产环境应使用外部数据库）
+# 允许跟踪初始的空数据库文件，但忽略包含数据的数据库文件
+!Django/db.sqlite3
+Django/db.sqlite3-journal
+Django/db.sqlite3-shm
+Django/db.sqlite3-wal
+
+# 日志文件
+*.log
+logs/
+
+# 临时文件
+tmp/
+temp/
