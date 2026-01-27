@@ -196,7 +196,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenu>
         </SidebarGroup>
         {transformedApps.length > 0 && memoizedNavApps}
-        <SidebarGroup>
+        {/* <SidebarGroup>
           <SidebarMenu>
             <SidebarGroupLabel className="group-data-[collapsible=icon]:hidden">
               Coze
@@ -210,7 +210,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
-        </SidebarGroup>
+        </SidebarGroup> */}
 
         {/* 管理员菜单 - 只有超级用户才能看到 */}
         {user.is_superuser && (
@@ -238,14 +238,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   </span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-              <SidebarMenuItem>
+              {/* <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="模型管理">
                   <span className="cursor-pointer" onClick={handleAdminModels}>
                     <Cog />
                     <span>模型管理</span>
                   </span>
                 </SidebarMenuButton>
-              </SidebarMenuItem>
+              </SidebarMenuItem> */}
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="系统设置">
                   <span

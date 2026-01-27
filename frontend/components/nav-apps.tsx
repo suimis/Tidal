@@ -54,7 +54,7 @@ export function NavApps({
   return (
     <SidebarGroup>
       <SidebarGroupLabel className="group-data-[collapsible=icon]:hidden">
-        Dify 应用
+        应用
       </SidebarGroupLabel>
       <SidebarMenu>
         {projects.map((item) => (

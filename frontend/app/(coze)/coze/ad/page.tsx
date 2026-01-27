@@ -1,5 +1,8 @@
 'use client';
 
+// 禁用静态生成，强制动态渲染
+export const dynamic = 'force-dynamic';
+
 import { useState, useRef, useCallback } from 'react';
 import Textarea from 'react-textarea-autosize';
 import ImageUploadButton from './components/image-upload-button';
@@ -94,7 +97,7 @@ export default function AdPage() {
         const result = await uploadFileToCoze(
           file,
           FILE_TYPE_GROUPS.images.mimeTypes,
-          50 * 1024 * 1024 // 50MB limit for images
+          50 * 1024 * 1024, // 50MB limit for images
         );
 
         if (result) {
@@ -111,7 +114,7 @@ export default function AdPage() {
         event.target.value = '';
       }
     },
-    []
+    [],
   );
 
   const removeAttachment = useCallback(() => {
@@ -247,7 +250,7 @@ export default function AdPage() {
                 content: item.content || '',
                 tag: item.tag || '',
                 image: item.image || '',
-              })
+              }),
             ),
           };
         }
@@ -302,7 +305,7 @@ export default function AdPage() {
                     content: item.content || '',
                     tag: item.tag || '',
                     image: item.image || '',
-                  })
+                  }),
                 ),
               };
             }
@@ -379,7 +382,7 @@ export default function AdPage() {
                       className="fixed -top-4 -left-4 size-0.5 opacity-0 pointer-events-none"
                       ref={fileInputRef}
                       accept={generateAcceptString(
-                        FILE_TYPE_GROUPS.images.mimeTypes
+                        FILE_TYPE_GROUPS.images.mimeTypes,
                       )}
                       onChange={handleFileChange}
                       tabIndex={-1}
@@ -405,7 +408,7 @@ export default function AdPage() {
                           <span className="text-lg">
                             {getFileIcon(
                               attachment.contentType ||
-                                'application/octet-stream'
+                                'application/octet-stream',
                             )}
                           </span>
                           <div className="flex flex-col min-w-0">
@@ -419,7 +422,7 @@ export default function AdPage() {
                               {formatFileSize(
                                 attachment.url
                                   ? new Blob([attachment.url]).size
-                                  : 0
+                                  : 0,
                               )}
                             </span>
                           </div>

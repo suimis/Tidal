@@ -126,32 +126,27 @@ const SolutionDisplay = ({
   onContentChange: (content: string) => void;
   onImageClick: (imageUrl: string) => void;
 }) => {
-  // 添加安全检查，确保solution对象存在
-  if (!solution) {
-    return (
-      <div className="p-6 bg-red-50 dark:bg-red-950 rounded-2xl border border-red-200 dark:border-red-800">
-        <div className="text-center text-red-600 dark:text-red-400">
-          <p>方案数据加载失败</p>
-        </div>
-      </div>
-    );
-  }
+  // 图片加载状态管理 - 必须在条件判断之前
+  const [imageLoading, setImageLoading] = useState(true);
+  const [imageError, setImageError] = useState(false);
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
 
   // 更严格的图片URL验证
   const hasValidImage =
+    solution &&
     solution.image &&
     solution.image.trim() !== '' &&
     solution.image !== 'null' &&
     solution.image !== 'undefined';
 
-  // 图片加载状态管理
-  const [imageLoading, setImageLoading] = useState(true);
-  const [imageError, setImageError] = useState(false);
-  const [imageSrc, setImageSrc] = useState<string | null>(null);
-
-  // 预加载图片
+  // 预加载图片 - 只在客户端执行
   useEffect(() => {
-    if (!hasValidImage) {
+    if (typeof window === 'undefined') {
+      // 服务端跳过
+      return;
+    }
+
+    if (!solution || !hasValidImage) {
       setImageLoading(false);
       setImageError(true);
       return;
@@ -184,7 +179,18 @@ const SolutionDisplay = ({
       img.onload = null;
       img.onerror = null;
     };
-  }, [solution.image, hasValidImage]);
+  }, [solution?.image, hasValidImage]);
+
+  // 添加安全检查，确保solution对象存在
+  if (!solution) {
+    return (
+      <div className="p-6 bg-red-50 dark:bg-red-950 rounded-2xl border border-red-200 dark:border-red-800">
+        <div className="text-center text-red-600 dark:text-red-400">
+          <p>方案数据加载失败</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col lg:flex-row gap-6 p-6 bg-white/80 dark:bg-black/80 rounded-2xl border border-neutral-200/50 dark:border-white/15 backdrop-blur-sm">
@@ -331,7 +337,7 @@ export default function ResultsView({
   // 处理发送到后端
   const handleSendToBackend = useCallback(() => {
     const adoptedSolutions = editableSolutions.filter(
-      (_, index) => solutionAdoptions[index]
+      (_, index) => solutionAdoptions[index],
     );
 
     // 开始发送状态
@@ -475,7 +481,7 @@ export default function ResultsView({
                           >
                             {index + 1}
                           </div>
-                        )
+                        ),
                     )}
                   </div>
                 )}

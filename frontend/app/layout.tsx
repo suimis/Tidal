@@ -1,3 +1,4 @@
+'use client';
 import type { Metadata } from 'next';
 import { Toaster } from '@/components/ui/sonner';
 import { Geist, Geist_Mono } from 'next/font/google';
@@ -14,11 +15,6 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
 });
-
-export const metadata: Metadata = {
-  title: 'UPA-Chatter',
-  description: '',
-};
 
 export default function RootLayout({
   children,

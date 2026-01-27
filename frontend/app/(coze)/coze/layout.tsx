@@ -1,7 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any, prefer-const, react/no-unescaped-entities */
+// 禁用静态生成，强制动态渲染
+export const dynamic = 'force-dynamic';
+
 import { AppSidebar } from '@/components/app-sidebar';
 import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
-import { useEffect } from 'react';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

@@ -14,6 +14,7 @@ import { Weather } from './weather';
 import { cx } from 'class-variance-authority';
 import { getFileIcon } from '@/lib/utils/file-upload';
 import Image from 'next/image';
+import { User } from 'lucide-react';
 
 interface MessageProps {
   message: UIMessage;
@@ -73,7 +74,7 @@ export default function Message({
         reload();
       }, 0);
     },
-    [setMessages, reload]
+    [setMessages, reload],
   );
 
   // 处理编辑消息
@@ -153,7 +154,7 @@ export default function Message({
     if (contentRef.current) {
       const element = contentRef.current;
       setHasOverflow(
-        element.scrollWidth > element.clientWidth && status === 'ready'
+        element.scrollWidth > element.clientWidth && status === 'ready',
       );
     }
   }, [message]);
@@ -364,7 +365,7 @@ ${
                                   <span className="text-2xl">
                                     {getFileIcon(
                                       attachment.contentType ||
-                                        'application/octet-stream'
+                                        'application/octet-stream',
                                     )}
                                   </span>
                                   <div className="flex flex-col">
@@ -378,7 +379,7 @@ ${
                                 </div>
                               )}
                             </div>
-                          )
+                          ),
                         )}
                       </div>
                     )}
@@ -393,11 +394,8 @@ ${
             <>
               <div className="inline-flex items-center gap-1 rounded-full bg-neutral-200 py-1 pl-2 pr-2.5 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-400">
                 <div className="size-5">
-                  <span className="relative flex shrink-0 overflow-hidden rounded-full absolute aspect-square h-full animate-overlayShow cursor-pointer border-2 shadow duration-200 pointer-events-none">
-                    <img
-                      className="aspect-square size-full object-cover"
-                      src="../avatar.jpg"
-                    />
+                  <span className="relative flex items-center shrink-0 overflow-hidden rounded-full absolute aspect-square h-full animate-overlayShow cursor-pointer border-2 shadow duration-200 pointer-events-none">
+                    <User />
                   </span>
                 </div>
                 <span className="text-neutral-600 dark:text-neutral-400">
@@ -413,12 +411,12 @@ ${
                   <span className="relative flex shrink-0 overflow-hidden rounded-full absolute aspect-square h-full animate-overlayShow cursor-pointer border-2 shadow duration-200 pointer-events-none">
                     <img
                       src={`/providers/logos/${
-                        model?.providerId || 'openai'
+                        model?.providerId || 'deepseek'
                       }.svg`}
                       alt={model?.providerId || 'AI'}
                       width={18}
                       height={18}
-                      className="bg-white rounded-full border"
+                      className="bg-white rounded-full border text-center"
                     />
                   </span>
                 </div>
