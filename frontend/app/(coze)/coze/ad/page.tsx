@@ -1,8 +1,5 @@
 'use client';
 
-// 禁用静态生成，强制动态渲染
-export const dynamic = 'force-dynamic';
-
 import { useState, useRef, useCallback } from 'react';
 import Textarea from 'react-textarea-autosize';
 import ImageUploadButton from './components/image-upload-button';
@@ -17,8 +14,8 @@ import {
   FILE_TYPE_GROUPS,
 } from '@/lib/utils/coze-file-upload';
 import AdBackground from './components/ad-background';
-import AdLoadingComponent from './components/AdLoadingComponent';
-import WordLimitButton from './components/WordLimitButton';
+import AdLoadingComponent from './components/ad-loading';
+import WordLimitButton from './components/word-limit-button';
 import ResultsView from '@/app/(coze)/coze/components/ResultsView';
 
 export default function AdPage() {

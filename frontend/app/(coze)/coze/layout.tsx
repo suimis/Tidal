@@ -6,13 +6,11 @@ import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <SidebarProvider>
-        <AppSidebar />
-        <SidebarInset>
-          <div className="min-h-dvh w-full flex overflow-auto">{children}</div>
-        </SidebarInset>
-      </SidebarProvider>
-    </>
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset>
+        <div className="min-h-dvh w-full flex overflow-auto">{children}</div>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }

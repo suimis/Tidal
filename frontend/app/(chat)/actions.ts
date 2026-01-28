@@ -12,8 +12,3 @@ export async function saveChatModelAsCookie(model: string) {
   const cookieStore = await cookies();
   cookieStore.set('chat-model', model);
 }
-
-export async function getApplications() {
-  const response = await api.get('/getApps');
-  return response;
-}

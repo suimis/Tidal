@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import { LetterText } from 'lucide-react';
-import CustomSlider from './CustomSlider';
+import CustomSlider from './custom-slider';
 
 interface WordLimitSliderCardProps {
   currentValue: number;

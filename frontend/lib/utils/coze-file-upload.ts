@@ -164,10 +164,10 @@ export const COZE_FILE_TYPES = {
 export const FILE_TYPE_GROUPS = {
   all: {
     mimeTypes: Object.values(COZE_FILE_TYPES).flatMap(
-      (group) => group.mimeTypes
+      (group) => group.mimeTypes,
     ),
     extensions: Object.values(COZE_FILE_TYPES).flatMap(
-      (group) => group.extensions
+      (group) => group.extensions,
     ),
     description: '所有支持的文件',
   },
@@ -188,14 +188,14 @@ const MAX_FILE_SIZE = 512 * 1024 * 1024;
 export function validateFile(
   file: File,
   acceptedTypes?: string[],
-  maxSize: number = MAX_FILE_SIZE
+  maxSize: number = MAX_FILE_SIZE,
 ): { isValid: boolean; error?: string } {
   // 检查文件大小
   if (file.size > maxSize) {
     return {
       isValid: false,
       error: `文件大小超过限制 (最大 ${formatFileSize(
-        maxSize
+        maxSize,
       )}): ${formatFileSize(file.size)}`,
     };
   }
@@ -252,7 +252,7 @@ export function validateFile(
 export async function uploadFileToCoze(
   file: File,
   acceptedTypes?: string[],
-  maxSize: number = MAX_FILE_SIZE
+  maxSize: number = MAX_FILE_SIZE,
 ): Promise<{ attachment: Attachment; fileId: string } | undefined> {
   try {
     // 验证文件
@@ -313,7 +313,7 @@ export async function uploadFileToCoze(
   } catch (error) {
     console.error('文件上传失败:', error);
     toast.error(
-      `文件上传失败: ${error instanceof Error ? error.message : '未知错误'}`
+      `文件上传失败: ${error instanceof Error ? error.message : '未知错误'}`,
     );
     return undefined;
   }
@@ -326,7 +326,7 @@ export async function uploadFilesToCoze(
   files: File[],
   acceptedTypes?: string[],
   maxSize: number = MAX_FILE_SIZE,
-  onProgress?: (progress: number, currentFile: string) => void
+  onProgress?: (progress: number, currentFile: string) => void,
 ): Promise<{ attachment: Attachment; fileId: string }[]> {
   const results: { attachment: Attachment; fileId: string }[] = [];
 

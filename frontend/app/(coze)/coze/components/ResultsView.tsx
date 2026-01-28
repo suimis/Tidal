@@ -7,8 +7,6 @@ import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { VisuallyHidden } from '@/components/ui/visually-hidden';
 import { Player } from '@lottiefiles/react-lottie-player';
 
-// 清理：不再需要自定义CSS动画样式，已替换为Lottie动画
-
 // 发送状态枚举
 type SendStatus = 'idle' | 'sending' | 'success' | 'error';
 

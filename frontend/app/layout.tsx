@@ -1,10 +1,9 @@
 'use client';
-import type { Metadata } from 'next';
+
 import { Toaster } from '@/components/ui/sonner';
 import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.css';
-import { ApplicationProvider } from '@/contexts/ApplicationContext';
 import { SidebarProvider } from '@/components/ui/sidebar';
+import './globals.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,12 +25,10 @@ export default function RootLayout({
       <body
         className={`bg-black overflow-hidden ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ApplicationProvider>
-          <SidebarProvider>
-            {children}
-            <Toaster position="top-center" />
-          </SidebarProvider>
-        </ApplicationProvider>
+        <SidebarProvider>
+          {children}
+          <Toaster position="top-center" />
+        </SidebarProvider>
       </body>
     </html>
   );
