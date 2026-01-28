@@ -1,14 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any, prefer-const, react/no-unescaped-entities */
-// Referenced from Vercel's AI Chatbot and modified to fit the needs of this project
-// https://github.com/vercel/ai-chatbot/blob/c2757f87f986b7f15fdf75c4c89cb2219745c53f/components/ui/codeblock.tsx
-
 'use client';
 
 import { FC, memo } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coldarkDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
-import { Button } from '@/components/ui/button';
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
 import { generateId } from 'ai';
 import { Check, Copy, Download } from 'lucide-react';
@@ -47,7 +42,6 @@ export const programmingLanguages: languageMap = {
   sql: '.sql',
   html: '.html',
   css: '.css',
-  // add more file extensions here, make sure the key is same as language prop in CodeBlock.tsx component
 };
 
 const CodeBlock: FC<Props> = memo(({ language, value }) => {
@@ -62,7 +56,6 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
     const fileName = window.prompt('Enter file name', suggestedFileName);
 
     if (!fileName) {
-      // User pressed cancel on prompt.
       return;
     }
 

@@ -215,7 +215,7 @@ ${modifiedPlan.steps.map((step, index) => `${index + 1}. ${step}`).join('\n')}
         content: executionPrompt,
       });
     },
-    [append, setPlanGenerated]
+    [append, setPlanGenerated],
   );
 
   const handlePlanDismiss = useCallback(() => {
@@ -285,19 +285,18 @@ ${modifiedPlan.steps.map((step, index) => `${index + 1}. ${step}`).join('\n')}
       currentMode,
       planGenerated,
       setPlanGenerated,
-    ]
+    ],
   );
   const className = useMemo(
     () =>
       `w-full flex flex-col items-center bg-white ${
         messages.length <= 0 ? 'min-h-screen justify-center' : 'h-full'
       }`,
-    [messages.length]
+    [messages.length],
   );
 
   return (
     <div className={`${className} relative`}>
-      {/* 在没有发生对话的时候显示Canvas背景 */}
       {messages.length === 0 && (
         <CanvasBackground gridSize={25} animationSpeed={0.18} />
       )}
@@ -344,7 +343,6 @@ ${modifiedPlan.steps.map((step, index) => `${index + 1}. ${step}`).join('\n')}
         />
       )}
 
-      {/* 计划模式UI - 绝对定位浮在内容之上 */}
       {currentMode === 'plan' &&
         planMode.status === 'generating' &&
         !planMode.currentPlan && <PlanDirectEditorLoading />}

@@ -339,16 +339,15 @@ export function PlanCardLoading() {
       exit={{ opacity: 0, y: -20 }}
       className="flex justify-center mb-4 px-4"
     >
-      <Card className="w-full max-w-2xl border-indigo-200 bg-gradient-to-r from-indigo-50 to-blue-50 shadow-md">
-        <CardContent className="p-4">
+      <div className="w-full max-w-2xl border-indigo-200 bg-gradient-to-r from-indigo-50 to-blue-50 shadow-md">
+        <div className="p-4">
           <div className="flex items-center justify-center space-x-3">
-            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-indigo-600"></div>
             <span className="text-sm text-indigo-700 font-medium">
               AI 正在生成计划中...
             </span>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </motion.div>
   );
 }

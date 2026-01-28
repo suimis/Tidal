@@ -47,7 +47,7 @@ export async function POST(req: Request) {
         {
           status: 404,
           statusText: 'Not Found',
-        }
+        },
       );
     }
 
@@ -83,7 +83,7 @@ export async function POST(req: Request) {
             if (attachment.url?.startsWith('data:')) {
               const base64Data = attachment.url.split(',')[1];
               const textContent = Buffer.from(base64Data, 'base64').toString(
-                'utf-8'
+                'utf-8',
               );
               textContents.push(`文件 "${attachment.name}":\n${textContent}`);
               console.log('[API Debug] Extracted text from:', attachment.name);
@@ -93,7 +93,7 @@ export async function POST(req: Request) {
           console.error(
             '[API Debug] Error processing attachment:',
             attachment.name,
-            error
+            error,
           );
         }
       }
@@ -122,13 +122,17 @@ export async function POST(req: Request) {
 
         // 如果是计划模式、是第一条消息、且不是执行请求，使用 Planner 生成计划
         if (mode === 'plan' && isFirstMessage && !isExecutionRequest) {
-          result = streamText(
-            Planner({
+          result = streamText({
+            model:
+              (modelDict[modelId] as Parameters<
+                typeof streamText
+              >[0]['model']) || deepseek('deepseek-chat'),
+            messages: Planner({
               messages: processedMessages,
               model: modelId,
               searchMode: false,
-            })
-          );
+            }),
+          });
         } else {
           // 常规模式或计划执行请求
           result = streamText({

@@ -1,4 +1,4 @@
-import { CoreMessage, smoothStream, streamText } from 'ai';
+import { CoreMessage, generateText, smoothStream, streamText } from 'ai';
 import { getModel } from '@/lib/utils/registry';
 
 const SYSTEM_PROMPT = `
@@ -46,9 +46,7 @@ const SYSTEM_PROMPT = `
 **重要：只输出JSON对象，不要添加任何其他文本或解释。**
 `;
 
-type PlannerReturn = Parameters<typeof streamText>[0];
-
-export function Planner({
+export async function Planner({
   messages,
   model,
   searchMode,
@@ -56,15 +54,15 @@ export function Planner({
   messages: CoreMessage[];
   model: string;
   searchMode: boolean;
-}): PlannerReturn {
+}): Promise<string> {
   try {
-    return {
+    const result = await generateText({
       model: getModel(model),
       system: `${SYSTEM_PROMPT}`,
       messages,
       maxSteps: searchMode ? 5 : 1,
-      experimental_transform: smoothStream({ chunking: 'word' }),
-    };
+    });
+    return result.text;
   } catch (error) {
     console.error('Error in Planner:', error);
     throw error;
